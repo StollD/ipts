@@ -177,7 +177,7 @@ int ipts_control_wait_flush(struct ipts_context *ipts)
 	int ret = 0;
 	struct ipts_response rsp = { 0 };
 
-	ret = ipts_mei_recv(&ipts->mei, IPTS_CMD_QUIESCE_IO, &rsp);
+	ret = ipts_mei_recv_timeout(&ipts->mei, IPTS_CMD_QUIESCE_IO, &rsp, 10 * MSEC_PER_SEC);
 	if (ret)
 		return ret;
 
